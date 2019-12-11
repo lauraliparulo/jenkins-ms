@@ -1,0 +1,38 @@
+jenkins:
+  server-url: 
+  username:  
+  password: 
+
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /api/v1/jenkinsdemo/swagger-api-docs
+        
+spring:
+  application:
+    name: jenkins-ms
+  profiles:
+    active: production,test
+    restart:
+      enabled: false
+  output:
+    ansi:
+      enabled: always
+  jmx:
+    enabled: false        
+
+logging.file:  ${LOG_FILE:/data/application.log}
+logging:
+  level:
+    root: ${LOG_LEVEL_ROOT:INFO}
+    org.springframework.web: ${LOG_LEVEL_SPRING:DEBUG}
+    o.a.c.core: ${LOG_LEVEL_SPRING:INFO}
+    sun.rmi: ${LOG_LEVEL_SPRING:ERROR}
+  pattern: 
+    console: ${CONSOLE_LOG_PATTERN:%-5r %d{HH:mm:ss.SSS} %5level [XC=%X{X-Correlation-ID}] [S=%X{State}] %X{Comment} [%t] %c{36} - %m%n} 
+    file: ${CONSOLE_LOG_PATTERN:%-5r %d{HH:mm:ss.SSS} %5level [XC=%X{X-Correlation-ID}] [S=%X{State}] %X{Comment} [%t] %c{36} - %m%n} 
+    max-size: 250MB
+  file: 
+    max-history: 20
+    max-size: 250MB
